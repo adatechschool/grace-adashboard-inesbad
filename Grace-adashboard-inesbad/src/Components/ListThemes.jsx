@@ -1,27 +1,16 @@
 import { ListSkills } from "./ListSkills";
 import { RemoveButton } from "./RemoveButton";
-export const ListThemes = ({value, handleDelete}) => {
-  
- 
-  
+export const ListThemes = ({v, handleDelete}) => { 
   return (
- 
     <div>
-
-      {value.map((elem) => (
+      {v.map((elem) => (
         <div key={elem.id}>
           <h1>{elem.name}</h1>
-          <ListSkills elem={elem} />
-          <RemoveButton id={elem.id} handleDelete={handleDelete} />
-          
-          
-          
+        <ListSkills elem={elem} v={v}/>
+        <RemoveButton id={elem.id} handleDelete={handleDelete} /> 
+         
      </div>
-        
       ))}
-
-    
-    
     </div>
   )
 }

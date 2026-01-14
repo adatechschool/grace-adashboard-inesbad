@@ -6,42 +6,43 @@ import './App.css'
 
 import { ListThemes } from './Components/ListThemes'
 
+
+
+
 //PUT trois elements a rentrer id themes, id skills, status 
 // themes/(:id)1/skills/(:idSkills)3/(:status)OK
 
 export default function App() {
-  const[value, setValue]= useState([])
-  
+  const[v, setV]= useState([])
+
  useEffect(() => {
  
     async function getData() {
       const res = await fetch("http://localhost:3000/themes");
       const data = await res.json();
-      setValue(data)
+      setV(data)
       console.log("test", data);
     }
     getData();
   }, []);
 
-
   
-const handleDelete = async (id) => {
+    const handleDelete = async (id) => {
     await fetch(`http://localhost:3000/themes/${id}`, {
       method: "DELETE",
     });
 
-    setValue((prev) => prev.filter((elem) => elem.id !== id));
+    setV((prev) => prev.filter((elem) => elem.id !== id));
   };
+  
 
   return (
    
 <div>
-<ListThemes value={value} handleDelete={handleDelete}/>
+<ListThemes v={v} handleDelete={handleDelete} />
 
+</div>
 
-</div> 
-   
-  
   )
 };
 
